@@ -1,0 +1,47 @@
+<div class="box box-primary" id="tags-adicionais">
+  <div class="box-header">
+    <div class="box-tools pull-left">
+      <%= f.link_to_add :tag_videos,
+                        class: 'btn btn-outline-success add-nested-form-button',
+                        data: {target: '#tag_videos'} do %>
+        <i class="fa fa-plus" style="color:green"></i> Adicionar TAG
+      <% end %>
+    </div>
+
+    <div class="box-body">
+      <div id="tag_videos" class="tag_videos-fields" style="padding-top: 10px">
+        <%= f.simple_fields_for :tag_videos do |cb| %>
+          <div class="row" style="display: flex; align-items: flex-end;">
+            <div class="form-group col-lg-4">
+              <%= cb.input :tag_id, label: 'TAG',
+                           input_html: {class: 'form-control tag-adicional-id'},
+                           collection: Tag.all.collect { |c| [c.name, c.id] },
+                           label_method: :first,
+                           value_method: :second %>
+            </div>
+            <div class="form-group col-lg-4">
+              <%= cb.link_to_remove class: 'btn btn-outline-danger' do %>
+                <i class="fa fa-trash" style="color:darkred"></i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :end_content do %>
+  <style>
+      @media only screen and (min-width: 1024px) {
+          .select2-container {
+              width: 300px;
+          }
+      }
+  </style>
+<% end %>
+
+
+
+

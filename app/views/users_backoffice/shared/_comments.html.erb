@@ -1,0 +1,30 @@
+<div style="padding: 10px 50px;">
+
+  <%= form_for :comment, method: :get do |f| %>
+    <div class="row">
+      <div class="form-group col-lg-12">
+        <label>Comentário</label>
+        <%= f.text_area :comments, name: :comments, placeholder: 'Comentário',
+                        class: 'form-control input-sm', value: params[:comments].present? ? params[:comments] : nil %>
+      </div>
+    </div>
+    <button class="btn btn-block btn-outline-primary table-search"><i class="fas fa-paper-plane"></i> Enviar comentário
+    </button>
+  <% end %>
+
+  <div class="card card-primary" style="margin-top: 20px">
+    <div class="card-header">
+      <p style="text-align: center; font-weight: bold; margin: 0">Comentários</p>
+    </div>
+    <div class="card-body" style="margin: 5px">
+      <% comments.each do |comment| %>
+        <div>
+          <p style="text-align: right; font-size: 14px; font-weight: bold"><%= comment.user.name %></p>
+          <p style="text-align: justify; font-size: 14px"><%= comment.comment %></p>
+          <p style="text-align: justify; font-size: 12px"><%= "(#{comment.created_at.strftime('%d/%m/%Y')})" %></p>
+          <hr class="divider">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

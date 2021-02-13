@@ -1,0 +1,11 @@
+<div class="w3-card w3-round w3-white">
+  <div class="card-body table-responsive p-0" style="display: flex;align-items: center;">
+    <div class="container text-center">
+      <%= link_to 'Notícias', users_backoffice_news_index_path, class: 'btn btn-outline-success', style: 'width: 100px;' %>
+      <%= link_to 'Vídeos', users_backoffice_videos_path, class: 'btn btn-outline-primary', style: 'width: 100px;' %>
+      <%= link_to 'Amigos', destroy_user_session_path, method: :delete, class: "btn btn-outline-warning", style: 'width: 100px;' %>
+      <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: "btn btn-outline-danger", style: 'width: 100px;' %>
+    </div>
+  </div>
+</div>
+

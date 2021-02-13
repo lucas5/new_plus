@@ -1,0 +1,37 @@
+<div class="w3-card w3-round w3-white" style="padding-bottom: 10px">
+  <div class="card-header">
+    <p class="card-title" style="font-weight: bold">Notícias</p>
+  </div>
+
+  <div class="form-inline" style="margin-top: 30px; margin-right: 50px; justify-content: flex-end;">
+    <%= form_for :user_backoffice, method: :get do |f| %>
+      <%= f.text_field :search, name: :search, placeholder: 'Buscar', type: 'search',
+                       class: 'form-control mr-sm-2', value: params[:search].present? ? params[:search] : nil %>
+      <button class="btn btn-outline-success my-2 my-sm-0" style='width: 40px'><i class="fas fa-search"></i></button>
+      <% if params[:search].present? %>
+        <%= link_to users_backoffice_news_index_path, class: 'btn btn-outline-danger my-2 my-sm-0', style: 'width: 40px' do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="card-body table-responsive p-0">
+    <div class="scroll">
+      <% @news.each do |new| %>
+        <div class="container text-center" style="padding: 20px 50px;">
+
+          <p style="text-align: center; font-weight: bold"><%= new.title %></p>
+          <p style="text-align: justify"><%= new.description %></p>
+
+          <div class="container text-center" style="margin-top: 20px; margin-bottom: 25px">
+            <%= link_to 'Ver mais', edit_users_backoffice_news_path(new.id), class: 'btn btn-outline-primary' %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+

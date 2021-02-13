@@ -4,6 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'devise'
+gem 'rails-i18n', '~> 6.0.0'
+gem 'simple_form'
+gem "nested_form"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.0'
 # Use sqlite3 as the database for Active Record

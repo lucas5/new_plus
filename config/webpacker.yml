@@ -1,4 +1,5 @@
 # Note: You must restart bin/webpack-dev-server for changes to take effect
+resolved_paths: ['app/assets']
 
 default: &default
   source_path: app/javascript

@@ -1,0 +1,32 @@
+<div class="w3-card w3-round w3-white">
+  <div class="card-header">
+    <%= link_to users_backoffice_news_index_path, class: 'btn btn-outline-default' do %>
+      <i class="fas fa-chevron-left"></i> Voltar
+    <% end %>
+  </div>
+  <div class="card-body table-responsive p-0">
+    <div class="scroll">
+      <div class="container text-center" style="padding: 20px 50px;">
+        <p style="text-align: center; font-weight: bold"><%= @new.title %></p>
+        <p style="text-align: justify"><%= @new.description %></p>
+        <p style="font-weight: bold; text-align: left"><%= @new.date_news.strftime('%d/%m/%Y') %></p>
+      </div>
+
+
+      <div style="padding: 0 50px;">
+        <% tags = "" %>
+        <% @new.tag_news.each do |tag_new| %>
+          <% tags += " #{tag_new.tag.name}, " %>
+        <% end %>
+
+        <% if tags.present? %>
+          <p><b>TAGS:</b><%= " #{tags[0...-2]}" %></p>
+        <% end %>
+      </div>
+
+      <%= render 'users_backoffice/shared/rating', rating: @rating %>
+      <%= render 'users_backoffice/shared/comments', comments: @comments %>
+
+    </div>
+  </div>
+</div>

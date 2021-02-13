@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NewPlus</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+      html,
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+          font-family: "Open Sans", sans-serif
+      }
+
+      .w3-theme-d2 {
+          background-color: #343a40 !important
+      }
+
+      .w3-theme-l1 {
+          background-color: #343a40 !important
+      }
+
+      .w3-theme-d4 {
+          background-color: #192735 !important
+      }
+
+      .w3-theme-d3 {
+          background-color: #343a40 !important
+      }
+  </style>
+</head>
+
+<body style="background: #474c52">
+
+<div class="w3-top">
+  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
+    <%= link_to users_backoffice_news_index_path,
+                class: 'w3-bar-item w3-button w3-padding-large w3-theme-d4' do %>
+      <i class="fa fa-home"></i>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete,
+                class: 'w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white' do %>
+       <i class="fas fa-sign-out-alt"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+  <div class="w3-row">
+    <div class="w3-col m3">
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+          <h5 style="font-weight: bold; padding-top: 15px;" class="w3-center"><%= current_user.name %></h5>
+          <hr>
+          <p><i class="fas fa-envelope-open-text fa-fw w3-margin-right w3-text-theme"></i><%= current_user.email %>
+          </p>
+        </div>
+      </div>
+      <br>
+
+      <div class="w3-card w3-round">
+        <div class="w3-white">
+          <%= link_to users_backoffice_news_index_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
+            <i class="far fa-newspaper"></i> Notícias
+          <% end %>
+
+          <%= link_to users_backoffice_videos_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
+            <i class="fas fa-video"></i> Vídeos
+          <% end %>
+
+          <%= link_to users_backoffice_users_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
+            <i class="fas fa-users"></i> Usuários
+          <% end %>
+
+          <% if current_user.is_admin %>
+            <%= link_to admins_backoffice_users_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
+              <i class="fas fa-user-cog"></i> Portal do administrador
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <br>
+
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold;">Lista de amigos</p>
+          <hr class="divider">
+          <% Friend.get_friend_list(current_user.id).each do |friend| %>
+            <p style="font-weight: bold"><%= User.find(friend.friend_id).name %></p>
+            <hr class="divider">
+          <% end %>
+
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding">
+        <div class="w3-col m12">
+          <%= yield %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w3-col m2">
+      <div class="w3-card w3-round w3-white w3-center">
+        <div class="w3-container">
+          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold">Solicitações</p>
+          <hr class="divider">
+          <% Friend.friends_request(current_user.id).each do |friend| %>
+            <p style="font-weight: bold"><%= User.find(friend.user_id).name %></p>
+            <div class="w3-row">
+              <div class="w3-half">
+                <%= link_to users_backoffice_accept_friend_request_path(friend.user_id), method: :post,
+                            class: 'btn btn-outline-success', style: 'width: 50px;' do %>
+                  <i class="fa fa-check"></i>
+                <% end %>
+              </div>
+              <div class="w3-half">
+                <%= link_to users_backoffice_news_index_path, class: 'btn btn-outline-danger', style: 'width: 50px;' do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
+              </div>
+            </div>
+            <hr class="divider">
+          <% end %>
+
+
+        </div>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>
+<br>
+
+</body>
+</html>

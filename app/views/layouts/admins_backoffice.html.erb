@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New+</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script type="application/javascript" src="/javascripts/nested_form.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+<div class="wrapper">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="/" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+    </ul>
+  </nav>
+
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+    <div class="sidebar">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <%= image_tag 'user.png', class:"img-circle elevation-2", alt:"User Image" %>
+        </div>
+        <div class="info">
+          <a href="/" class="d-block"><%= current_user.name %></a>
+        </div>
+      </div>
+
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <%= link_to users_backoffice_news_index_path, class:"nav-link" do %>
+              <i class="fas fa-user"></i> <p>Portal do usuário</p>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_users_path, class:"nav-link" do %>
+              <i class="fas fa-users-cog"></i> <p>Admins</p>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_only_users_path, class:"nav-link" do %>
+              <i class="fas fa-user-friends"></i> <p>Usuários</p>
+            <% end %>
+          </li>
+
+          <li class="nav-header">CADASTROS</li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_videos_path, class:"nav-link" do %>
+              <i class="fas fa-video"></i> <p>Videos</p>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_news_index_path, class:"nav-link" do %>
+              <i class="far fa-newspaper"></i> <p>Notícias</p>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_tags_path, class:"nav-link" do %>
+              <i class="fas fa-tag"></i> <p>Tags</p>
+            <% end %>
+          </li>
+
+          <li class="nav-header">MODERAÇÃO</li>
+
+          <li class="nav-item">
+            <%= link_to admins_backoffice_comments_path, class:"nav-link" do %>
+              <i class="fas fa-comments"></i> <p>Comentários</p>
+            <% end %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+              <i class="fas fa-sign-out-alt"></i> <p>Sair</p>
+            <% end %>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <div class="content-wrapper">
+    <%= yield %>
+  </div>
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 1.0.0
+    </div>
+    <strong>New+ </strong>
+  </footer>
+
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+</div>
+
+</body>
+</html>

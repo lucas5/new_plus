@@ -1,0 +1,57 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Videos</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active">Videos</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">Videos</h3>
+
+      <div class="card-tools">
+        <%= link_to 'Cadastrar', new_admins_backoffice_video_path, class: 'btn btn-outline-success' %>
+      </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Duração</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @videos.each do |video| %>
+          <tr>
+            <td><%= video.id %></td>
+            <td><%= video.title %></td>
+            <td><%= "#{video.duration} min" %></td>
+            <td>
+              <%= link_to edit_admins_backoffice_video_path(video.id), class: 'btn btn-outline-primary' do %>
+                <i class="fas fa-edit"></i> Editar
+              <% end %>
+              <%= link_to admins_backoffice_video_path(video), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-outline-danger' do %>
+                <i class="fas fa-trash"></i> Excluir
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>

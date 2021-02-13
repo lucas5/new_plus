@@ -1,0 +1,68 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Usuários</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active">Usuários</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">USERS</h3>
+
+      <div class="card-tools">
+        <div class="card-tools">
+          <%= link_to 'Cadastrar', new_admins_backoffice_user_path, class: 'btn btn-outline-success' %>
+        </div>
+      </div>
+    </div>
+    <div class="card-body table-responsive p-0">
+      <table class="table table-hover text-nowrap">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.banned %>
+                <%= link_to admins_backoffice_remove_user_ban_path(user.id), method: :put, class: "btn btn-outline-warning" do %>
+                  <i class="fas fa-user-slash"></i> Remover banimento
+                <% end %>
+              <% else %>
+                <%= link_to admins_backoffice_path(user.id), method: :put, class: "btn btn-outline-warning" do %>
+                  <i class="fas fa-user-slash"></i> Banir
+                <% end %>
+              <% end %>
+
+              <%= link_to edit_admins_backoffice_user_path(user.id), class: "btn btn-outline-primary" do %>
+                <i class="fas fa-edit"></i> Editar
+              <% end %>
+              <%= link_to admins_backoffice_user_path(user), method: :delete, data: {confirm: 'Tem certeza?'}, class: 'btn btn-outline-danger' do %>
+                <i class="fas fa-trash"></i> Excluir
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

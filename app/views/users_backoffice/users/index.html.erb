@@ -1,0 +1,40 @@
+<div class="w3-card w3-round w3-white">
+  <div class="card-header">
+    <p class="card-title" style="font-weight: bold">Usuários</p>
+  </div>
+  <div class="card-body table-responsive p-0">
+    <div class="scroll" style="padding-top: 20px">
+      <% @users.each do |user| %>
+        <div style="padding-left: 50px; padding-right: 50px">
+
+          <div class="row" style="justify-content: space-between; align-items: baseline;">
+            <p><%= user.name %></p>
+
+            <% request_status = Friend.verify_friendship(current_user.id, user.id) %>
+            <% if request_status == 0 %>
+
+              <%= link_to users_backoffice_send_friend_request_path(user.id), method: :post, class: 'btn btn-outline-success', style: 'width: 200px' do %>
+                <i class="fas fa-user-plus"></i> Solicitar amizade
+              <% end %>
+
+            <% elsif request_status == 1 %>
+
+              <%= link_to users_backoffice_cancel_friend_request_path(user.id), method: :delete, class: 'btn btn-outline-warning', style: 'width: 200px' do %>
+                <i class="fas fa-user-plus"></i> Cancelar solicitação
+              <% end %>
+
+            <% else %>
+              <%= link_to users_backoffice_undo_friendship_path(user.id), method: :delete, class: 'btn btn-outline-danger', style: 'width: 200px' do %>
+                <i class="fas fa-user-plus"></i> Remover amizade
+              <% end %>
+            <% end %>
+
+          </div>
+
+          <hr class="divider">
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
