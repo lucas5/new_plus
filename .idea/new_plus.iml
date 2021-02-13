@@ -18,6 +18,9 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/features" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/helpers/admins_backoffice" />
+      <excludeFolder url="file://$MODULE_DIR$/app/helpers/home" />
+      <excludeFolder url="file://$MODULE_DIR$/app/helpers/users_backoffice" />
       <excludeFolder url="file://$MODULE_DIR$/components" />
       <excludeFolder url="file://$MODULE_DIR$/log" />
       <excludeFolder url="file://$MODULE_DIR$/public/packs" />
