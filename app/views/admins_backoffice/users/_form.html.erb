@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+
+          <div class="card-header">
+            <h3 class="card-title">Usuário</h3>
+          </div>
+
+          <%= simple_form_for([:admins_backoffice, user], url: user.new_record? ? admins_backoffice_users_path : admins_backoffice_user_path(user)) do |f| %>
+            <div class="card-body">
+
+              <div class="form-group">
+                <label>Nome</label>
+                <%= f.input :name, label: false,
+                            input_html: { class:"form-control", placeholder:"Enter name" } %>
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <%= f.input :email, label: false,
+                            input_html: { type:"email", class:"form-control", placeholder:"Enter email" } %>
+              </div>
+
+              <div class="form-group">
+                <label>Senha</label>
+                <%= f.input :password, label: false,
+                            input_html: { type:"password", class:"form-control", placeholder:"Enter password" } %>
+              </div>
+
+              <div class="form-check">
+                <%= f.input :is_admin, label: false, as: :boolean, input_html: { type:"checkbox", class:"form-check-input" } %>
+                <label class="form-check-label">Administrador</label>
+              </div>
+
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-success">Salvar</button>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
