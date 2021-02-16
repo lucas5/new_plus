@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- Font Awesome -->
@@ -23,10 +23,6 @@
 
   <body class="hold-transition login-page">
   <div class="login-box">
-    <div class="login-logo">
-      <a href="../../index2.html"><b>New</b>+</a>
-    </div>
-
     <%= yield %>
   </div>
 
