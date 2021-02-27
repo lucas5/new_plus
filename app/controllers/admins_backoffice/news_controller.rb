@@ -31,7 +31,7 @@ class AdminsBackoffice::NewsController < AdminsBackofficeController
   # PATCH/PUT /admins/1
   def update
     if @new.update(new_params)
-      redirect_to admins_backoffice_news_index_path(@new), notice: "Notícia atualizada"
+      redirect_to admins_backoffice_news_index_path, notice: "Notícia atualizada"
     else
       render :edit
     end

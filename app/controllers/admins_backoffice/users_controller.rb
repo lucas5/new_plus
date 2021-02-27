@@ -49,7 +49,7 @@ class AdminsBackoffice::UsersController < AdminsBackofficeController
   # PATCH/PUT /admins/1
   def update
     if @user.update(user_params)
-      redirect_to edit_admins_backoffice_user_path(@user), notice: "User atualizado"
+      redirect_to edit_admins_backoffice_user_path, notice: "User atualizado"
     else
       render :edit
     end
