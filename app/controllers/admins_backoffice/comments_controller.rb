@@ -4,7 +4,7 @@ class AdminsBackoffice::CommentsController < AdminsBackofficeController
   end
 
   def comments_by_user
-    @comments = Comment.where(user_id: params[:user_id]).not_excluded
+    @comments = Comment.where(user_id: params[:user_id], deleted: false).not_excluded
   end
 
   def delete_comment
