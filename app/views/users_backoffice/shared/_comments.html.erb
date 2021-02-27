@@ -3,18 +3,18 @@
   <%= form_for :comment, method: :get do |f| %>
     <div class="row">
       <div class="form-group col-lg-12">
-        <label>Comentário</label>
-        <%= f.text_area :comments, name: :comments, placeholder: 'Comentário',
+        <label><%= t('comments') %></label>
+        <%= f.text_area :comments, name: :comments, placeholder: t('comment'),
                         class: 'form-control input-sm', value: params[:comments].present? ? params[:comments] : nil %>
       </div>
     </div>
-    <button class="btn btn-block btn-outline-primary table-search"><i class="fas fa-paper-plane"></i> Enviar comentário
+    <button class="btn btn-block btn-outline-primary table-search"><i class="fas fa-paper-plane"></i> <%= t('send_comment') %>
     </button>
   <% end %>
 
   <div class="card card-primary" style="margin-top: 20px">
     <div class="card-header">
-      <p style="text-align: center; font-weight: bold; margin: 0">Comentários</p>
+      <p style="text-align: center; font-weight: bold; margin: 0"><%= t('comments') %></p>
     </div>
     <div class="card-body" style="margin: 5px">
       <% comments.each do |comment| %>

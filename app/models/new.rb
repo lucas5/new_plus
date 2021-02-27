@@ -3,12 +3,14 @@ class New < ApplicationRecord
 
   has_many :tag_news, class_name: 'TagNew', dependent: :destroy
   has_many :tags, through: :tag_new, class_name: 'Tag', source: :tag, dependent: :destroy
-  has_many :comments, class_name: 'Comment'
+  has_many :comments, class_name: 'Comment', dependent: :destroy
 
   scope :news_search, -> (search) do
     search = search.downcase if search.present?
     where(search.present? ? ['LOWER(description) LIKE ?', "%#{search}%"] : [])
   end
+
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
 
   accepts_nested_attributes_for :tag_news, allow_destroy: true
 end

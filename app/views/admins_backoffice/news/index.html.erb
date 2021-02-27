@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Notícias</h1>
+        <h1><%= t('news') %></h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active">Notícias</li>
+          <li class="breadcrumb-item"><a href="/"><%= t('home') %></a></li>
+          <li class="breadcrumb-item active"><%= t('news') %></li>
         </ol>
       </div>
     </div>
@@ -17,10 +17,10 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Notícias</h3>
+      <h3 class="card-title"><%= t('news') %></h3>
 
       <div class="card-tools">
-        <%= link_to 'Cadastrar', new_admins_backoffice_news_path, class: 'btn btn-outline-success' %>
+        <%= link_to t('register'), new_admins_backoffice_news_path, class: 'btn btn-outline-success' %>
       </div>
     </div>
     <div class="card-body table-responsive p-0">
@@ -28,7 +28,7 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Título</th>
+          <th><%= t('title') %></th>
           <th></th>
         </tr>
         </thead>
@@ -39,10 +39,10 @@
             <td><%= new.title %></td>
             <td>
               <%= link_to edit_admins_backoffice_news_path(new.id), class: 'btn btn-outline-primary' do %>
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> <%= t('edit') %>
               <% end %>
               <%= link_to admins_backoffice_news_path(new), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-outline-danger' do %>
-                <i class="fas fa-trash"></i> Excluir
+                <i class="fas fa-trash"></i> <%= t('delete') %>
               <% end %>
             </td>
           </tr>

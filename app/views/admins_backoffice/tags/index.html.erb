@@ -6,7 +6,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/"><%= t('home') %></a></li>
           <li class="breadcrumb-item active">Tags</li>
         </ol>
       </div>
@@ -20,7 +20,7 @@
       <h3 class="card-title">Tags</h3>
 
       <div class="card-tools">
-        <%= link_to 'Cadastrar', new_admins_backoffice_tag_path, class: 'btn btn-outline-success' %>
+        <%= link_to t('register'), new_admins_backoffice_tag_path, class: 'btn btn-outline-success' %>
       </div>
     </div>
     <div class="card-body table-responsive p-0">
@@ -28,7 +28,8 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
+          <th><%= t('name') %></th>
+          <th><%= t('language') %></th>
           <th></th>
         </tr>
         </thead>
@@ -37,12 +38,13 @@
           <tr>
             <td><%= tag.id %></td>
             <td><%= tag.name %></td>
+            <td><%= tag.locale %></td>
             <td>
               <%= link_to edit_admins_backoffice_tag_path(tag.id), class: 'btn btn-outline-primary' do %>
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> <%= t('edit') %>
               <% end %>
               <%= link_to admins_backoffice_tag_path(tag), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-outline-danger' do %>
-                <i class="fas fa-trash"></i> Excluir
+                <i class="fas fa-trash"></i> <%= t('delete') %>
               <% end %>
             </td>
           </tr>

@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Usuários</h1>
+        <h1><%= t('users') %></h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active">Usuários</li>
+          <li class="breadcrumb-item"><a href="/"><%= t('home') %></a></li>
+          <li class="breadcrumb-item active"><%= t('users') %></li>
         </ol>
       </div>
     </div>
@@ -17,11 +17,11 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">USERS</h3>
+      <h3 class="card-title"><%= t('user').upcase %></h3>
 
       <div class="card-tools">
         <div class="card-tools">
-          <%= link_to 'Cadastrar', new_admins_backoffice_user_path, class: 'btn btn-outline-success' %>
+          <%= link_to t('register'), new_admins_backoffice_user_path, class: 'btn btn-outline-success' %>
         </div>
       </div>
     </div>
@@ -30,8 +30,8 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
-          <th>Email</th>
+          <th><%= t('name') %></th>
+          <th><%= t('email') %></th>
           <th></th>
         </tr>
         </thead>
@@ -44,19 +44,19 @@
             <td>
               <% if user.banned %>
                 <%= link_to admins_backoffice_remove_user_ban_path(user.id), method: :put, class: "btn btn-outline-warning" do %>
-                  <i class="fas fa-user-slash"></i> Remover banimento
+                  <i class="fas fa-user-slash"></i> <%= t('remove_ban') %>
                 <% end %>
               <% else %>
                 <%= link_to admins_backoffice_path(user.id), method: :put, class: "btn btn-outline-warning" do %>
-                  <i class="fas fa-user-slash"></i> Banir
+                  <i class="fas fa-user-slash"></i> <%= t('ban') %>
                 <% end %>
               <% end %>
 
               <%= link_to edit_admins_backoffice_user_path(user.id), class: "btn btn-outline-primary" do %>
-                <i class="fas fa-edit"></i> Editar
+                <i class="fas fa-edit"></i> <%= t('edit') %>
               <% end %>
               <%= link_to admins_backoffice_user_path(user), method: :delete, data: {confirm: 'Tem certeza?'}, class: 'btn btn-outline-danger' do %>
-                <i class="fas fa-trash"></i> Excluir
+                <i class="fas fa-trash"></i> <%= t('delete') %>
               <% end %>
             </td>
           </tr>

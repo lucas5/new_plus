@@ -4,6 +4,7 @@ class CreateNews < ActiveRecord::Migration[6.1]
       t.string :title, index: true
       t.text :description, index: true
       t.date :date_news
+      t.boolean :deleted, default: false
       t.timestamps
     end
   end

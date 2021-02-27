@@ -9,9 +9,12 @@ class UsersBackofficeController < ApplicationController
   end
 
   def accept_friend_request
-    byebug
     friend = Friend.new({user_id: current_user.id, friend_id: params[:friend_id]})
     friend.save
+  end
+
+  def change_language
+    I18n.locale = params[:format] == 'es' ? :es : I18n.default_locale
   end
 
 end

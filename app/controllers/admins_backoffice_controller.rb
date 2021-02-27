@@ -4,7 +4,7 @@ class AdminsBackofficeController < ApplicationController
   layout 'admins_backoffice'
 
   def is_admin
-    redirect_to(users_backoffice_welcome_index_path,
+    redirect_to(users_backoffice_news_index_path,
     notice: 'Necessário existir uma internação em aberto') unless current_user.is_admin
   end
 end

@@ -5,20 +5,20 @@
         <div class="card card-primary">
 
           <div class="card-header">
-            <h3 class="card-title">Vídeo</h3>
+            <h3 class="card-title"><%= t('video') %></h3>
           </div>
 
           <%= simple_nested_form_for([:admins_backoffice, video], url: video.new_record? ? admins_backoffice_videos_path : admins_backoffice_video_path(video)) do |f| %>
             <div class="card-body">
 
               <div class="form-group">
-                <label>Título</label>
+                <label><%= t('title') %></label>
                 <%= f.input :title, label: false,
                             input_html: { class:"form-control", placeholder:"Enter title" } %>
               </div>
 
               <div class="form-group">
-                <label>Descrição</label>
+                <label><%= t('description') %></label>
                 <%= f.input :description, label: false,
                             input_html: { class:"form-control", placeholder:"Enter description" } %>
               </div>
@@ -30,7 +30,7 @@
               </div>
 
               <div class="form-group">
-                <label>Duração (min)</label>
+                <label><%= t('duration') %></label>
                 <%= f.input :duration, label: false,
                             input_html: { class:"form-control", placeholder:"Enter duration" } %>
               </div>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-outline-success">Salvar</button>
+              <button type="submit" class="btn btn-outline-success"><%= t('register') %></button>
             </div>
 
 

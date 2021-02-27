@@ -2,7 +2,7 @@ class AdminsBackoffice::VideosController < AdminsBackofficeController
   before_action :set_video, only: [:edit, :update, :destroy]
 
   def index
-    @videos = Video.all
+    @videos = Video.not_excluded
   end
 
   # GET /videos/1
@@ -39,7 +39,7 @@ class AdminsBackoffice::VideosController < AdminsBackofficeController
 
   # DELETE /videos/1
   def destroy
-    @video.destroy
+    @video.update_attribute(:deleted, true)
     redirect_to admins_backoffice_videos_path, notice: "Video apagado"
   end
 

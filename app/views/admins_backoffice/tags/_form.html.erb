@@ -5,20 +5,26 @@
         <div class="card card-primary">
 
           <div class="card-header">
-            <h3 class="card-title">Vídeo</h3>
+            <h3 class="card-title">TAG</h3>
           </div>
 
           <%= simple_form_for([:admins_backoffice, tag], url: tag.new_record? ? admins_backoffice_tags_path : admins_backoffice_tag_path(tag)) do |f| %>
             <div class="card-body">
 
               <div class="form-group">
-                <label>Título</label>
+                <label><%= t('title') %></label>
                 <%= f.input :name, label: false,
                             input_html: { class:"form-control", placeholder:"Enter nome" } %>
               </div>
 
               <div class="form-group">
-                <label>Descrição</label>
+                <label><%= t('language') %></label>
+                <%= f.input :locale, label: false, input_html: {class: 'form-control'},
+                            collection: [['Português', 'pt-BR'], ['Espanhol', 'es']], label_method: :first, value_method: :second %>
+              </div>
+
+              <div class="form-group">
+                <label><%= t('description') %></label>
                 <%= f.input :description, label: false,
                             input_html: { class:"form-control", placeholder:"Enter description" } %>
               </div>
@@ -26,7 +32,7 @@
             </div>
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-outline-success">Salvar</button>
+              <button type="submit" class="btn btn-outline-success"><%= t('register') %></button>
             </div>
           <% end %>
         </div>

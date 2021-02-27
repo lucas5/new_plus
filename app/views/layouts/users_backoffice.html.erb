@@ -43,7 +43,7 @@
   </style>
 </head>
 
-<body style="background: #474c52">
+<body style="background-image: url(<%= asset_path 'background.jpg' %>); background-size: cover; height: 600px;">
 
 <div class="w3-top">
   <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
@@ -54,7 +54,7 @@
 
     <%= link_to destroy_user_session_path, method: :delete,
                 class: 'w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white' do %>
-       <i class="fas fa-sign-out-alt"></i>
+      <i class="fas fa-sign-out-alt"></i>
     <% end %>
   </div>
 </div>
@@ -75,20 +75,20 @@
       <div class="w3-card w3-round">
         <div class="w3-white">
           <%= link_to users_backoffice_news_index_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
-            <i class="far fa-newspaper"></i> Notícias
+            <i class="far fa-newspaper"></i> <%= t('news') %>
           <% end %>
 
           <%= link_to users_backoffice_videos_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
-            <i class="fas fa-video"></i> Vídeos
+            <i class="fas fa-video"></i> <%= t('videos') %>
           <% end %>
 
           <%= link_to users_backoffice_users_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
-            <i class="fas fa-users"></i> Usuários
+            <i class="fas fa-users"></i> <%= t('users') %>
           <% end %>
 
           <% if current_user.is_admin %>
             <%= link_to admins_backoffice_users_path, class: 'w3-button w3-block w3-theme-l1 w3-left-align' do %>
-              <i class="fas fa-user-cog"></i> Portal do administrador
+              <i class="fas fa-user-cog"></i> <%= t('admins_backoffice') %>
             <% end %>
           <% end %>
         </div>
@@ -97,7 +97,7 @@
 
       <div class="w3-card w3-round w3-white">
         <div class="w3-container">
-          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold;">Lista de amigos</p>
+          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold;"><%= t('friend_list') %></p>
           <hr class="divider">
           <% Friend.get_friend_list(current_user.id).each do |friend| %>
             <p style="font-weight: bold"><%= User.find(friend.friend_id).name %></p>
@@ -106,23 +106,43 @@
 
         </div>
       </div>
+
+      <br>
+
+      <div class="w3-card w3-round w3-white">
+        <div class="w3-container">
+          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold;"><%= t('change_language') %></p>
+          <hr class="divider">
+
+          <div style="display: flex; justify-content: center;">
+            <%= link_to ({:locale => :es}) do %>
+              <%= image_tag 'espanha.png', alt: "Espanha Image", style: 'height: 50px; width: 50px; margin-right: 15px;' %>
+            <% end %>
+
+            <%= link_to ({:locale => 'pt-BR'}) do %>
+              <%= image_tag 'brasil.png', alt: "Brasil Image", style: 'height: 50px; width: 50px' %>
+            <% end %>
+          </div>
+          <hr class="divider">
+
+        </div>
+      </div>
+
       <br>
     </div>
 
-    <div class="w3-col m7">
-
+    <div class="w3-col m7" >
       <div class="w3-row-padding">
         <div class="w3-col m12">
           <%= yield %>
         </div>
       </div>
-
     </div>
 
     <div class="w3-col m2">
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
-          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold">Solicitações</p>
+          <p style="padding-top: 20px; font-size: 17px; text-align: center; font-weight: bold"><%= t('requests') %></p>
           <hr class="divider">
           <% Friend.friends_request(current_user.id).each do |friend| %>
             <p style="font-weight: bold"><%= User.find(friend.user_id).name %></p>
@@ -150,6 +170,7 @@
 
   </div>
 </div>
+
 <br>
 
 </body>

@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :friends, class_name: 'Friend'
 
   scope :no_banned, -> { where(banned: false) }
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
 end

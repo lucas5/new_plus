@@ -5,7 +5,7 @@ class UsersBackoffice::NewsController < UsersBackofficeController
 
   def edit
     @new = New.find(params[:id])
-    @comments = Comment.where(new_id: @new.id).order(created_at: :desc)
+    @comments = Comment.where(new_id: @new.id, locale: params[:locale]).order(created_at: :desc)
     @rating = Rating.where(user_id: current_user.id, new_id: @new.id).last
 
     create_comment params[:comments], @new.id
@@ -16,7 +16,7 @@ class UsersBackoffice::NewsController < UsersBackofficeController
 
   def create_comment(comment, item_id)
     if comment.present? and comment != ''
-      _comment = Comment.new({user_id: current_user.id, comment: comment, new_id: item_id})
+      _comment = Comment.new({user_id: current_user.id, comment: comment, new_id: item_id, locale: params[:locale]})
       if _comment.save
         redirect_to edit_users_backoffice_news_path(item_id), notice: "Comentário cadastrado"
       end

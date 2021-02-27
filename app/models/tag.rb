@@ -7,4 +7,6 @@ class Tag < ApplicationRecord
   has_many :tag_news, class_name: 'TagNew'
   has_many :news, class_name: 'New'
 
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
+  scope :by_locale, -> (locale) { where(locale: locale) }
 end

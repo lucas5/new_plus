@@ -9,6 +9,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.boolean :is_admin, default: false
       t.boolean :banned, default: false
       t.string :name
+      t.boolean :deleted, default: false
 
       ## Recoverable
       t.string   :reset_password_token

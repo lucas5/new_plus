@@ -1,11 +1,22 @@
 <div class="card">
   <div class="card-body login-card-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 10px">
+      <%= link_to ({:locale => :es}) do %>
+        <%= image_tag 'espanha.png', alt: "Espanha Image", style: 'height: 40px; width: 40px; margin-right: 15px;' %>
+      <% end %>
+
+      <%= link_to ({:locale => 'pt-BR'}) do %>
+        <%= image_tag 'brasil.png', alt: "Brasil Image", style: 'height: 40px; width: 40px' %>
+      <% end %>
+    </div>
+
+    <p class="login-box-msg"><%= t('login_message') %></p>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="input-group mb-3">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email",
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('email'),
                           input_html: {type: "email"} %>
         <div class="input-group-append">
           <div class="input-group-text">
@@ -15,7 +26,7 @@
       </div>
 
       <div class="input-group mb-3">
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password",
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t('password'),
                              input_html: {type: "password"} %>
         <div class="input-group-append">
           <div class="input-group-text">
@@ -29,15 +40,14 @@
           <% if devise_mapping.rememberable? %>
             <div class="field">
               <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+              <%= f.label t('remember_me') %>
             </div>
           <% end %>
         </div>
 
         <div class="col-4">
-          <%= f.submit "Log in", class: "btn btn-primary btn-block" %>
+          <%= f.submit t('login'), class: "btn btn-primary btn-block" %>
         </div>
-
 
       </div>
 
@@ -46,6 +56,7 @@
     <div style="padding-top: 5px">
       <%= render "users/shared/links" %>
     </div>
+
   </div>
   <!-- /.login-card-body -->
 </div>

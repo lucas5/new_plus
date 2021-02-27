@@ -2,7 +2,7 @@ class AdminsBackoffice::TagsController < AdminsBackofficeController
   before_action :set_tag, only: [:edit, :update, :destroy]
 
   def index
-    @tags = Tag.all
+    @tags = Tag.not_excluded
   end
 
   # GET /tags/1
@@ -31,7 +31,7 @@ class AdminsBackoffice::TagsController < AdminsBackofficeController
   # PATCH/PUT /admins/1
   def update
     if @tag.update(tag_params)
-      redirect_to admins_backoffice_tags_path(@tag), notice: "Tag atualizado"
+      redirect_to admins_backoffice_tags_path, notice: "Tag atualizado"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class AdminsBackoffice::TagsController < AdminsBackofficeController
 
   # DELETE /tags/1
   def destroy
-    @tag.destroy
+    @tag.update_attribute(:deleted, true)
     redirect_to admins_backoffice_tags_path, notice: "Tag apagado"
   end
 
@@ -52,6 +52,6 @@ class AdminsBackoffice::TagsController < AdminsBackofficeController
 
   # Only allow a list of trusted parameters through.
   def tag_params
-    params.fetch(:tag).permit(:name, :description)
+    params.fetch(:tag).permit(:name, :description, :locale)
   end
 end

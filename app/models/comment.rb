@@ -5,4 +5,7 @@ class Comment < ApplicationRecord
 
   has_one :new, class_name: 'New'
   has_one :video, class_name: 'Video'
+
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
+  scope :by_locale, -> (locale) { where(locale: locale) }
 end

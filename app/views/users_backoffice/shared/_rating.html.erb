@@ -2,14 +2,14 @@
   <%= form_for :ratings, method: :get do |f| %>
     <div class="row">
       <div class="form-group col-lg-12">
-        <label>Avaliação (1 a 10)</label>
-        <%= f.text_field :rating, name: :rating, placeholder: 'Avaliação', type: 'number', min: 0, max: 10,
+        <label><%= t('rating') %> (1 a 10)</label>
+        <%= f.text_field :rating, name: :rating, placeholder: t('rating'), type: 'number', min: 0, max: 10,
                          disabled: rating.present? ? true : false,
                          class: 'form-control input-sm', value: rating.present? ? rating.rate : params[:rating] %>
       </div>
     </div>
     <% unless rating.present? %>
-      <button class="btn btn-block btn-outline-warning table-search"><i class="far fa-star"></i> Enviar avaliação</button>
+      <button class="btn btn-block btn-outline-warning table-search"><i class="far fa-star"></i> <%= t('send_rating') %></button>
     <% end %>
   <% end %>
 </div>

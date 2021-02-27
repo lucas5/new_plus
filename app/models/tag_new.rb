@@ -3,4 +3,6 @@ class TagNew < ApplicationRecord
 
   belongs_to :tag, class_name: 'Tag'
   belongs_to :new, foreign_key: :new_id, class_name: 'New', required: false
+
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
 end

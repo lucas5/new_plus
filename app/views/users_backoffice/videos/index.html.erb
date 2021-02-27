@@ -1,6 +1,6 @@
 <div class="w3-card w3-round w3-white">
   <div class="card-header">
-    <p class="card-title" style="font-weight: bold">Videos</p>
+    <p class="card-title" style="font-weight: bold"><%= t('videos') %></p>
   </div>
   <div class="card-body table-responsive p-0">
     <div class="scroll" style="padding-top: 35px; padding-bottom: 5px">
@@ -10,7 +10,7 @@
                 autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
           <div class="container text-center" style="margin-top: 20px; margin-bottom: 25px">
-            <%= link_to 'Ver mais', edit_users_backoffice_video_path(video.id), class: 'btn btn-outline-primary' %>
+            <%= link_to t('more'), edit_users_backoffice_video_path(video.id), class: 'btn btn-outline-primary' %>
           </div>
         </div>
       <% end %>

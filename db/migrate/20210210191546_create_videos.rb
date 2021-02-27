@@ -5,6 +5,7 @@ class CreateVideos < ActiveRecord::Migration[6.1]
       t.text :description
       t.string :title
       t.float :duration
+      t.boolean :deleted, default: false
       t.timestamps
     end
   end

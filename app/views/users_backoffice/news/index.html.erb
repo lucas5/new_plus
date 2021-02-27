@@ -1,11 +1,11 @@
 <div class="w3-card w3-round w3-white" style="padding-bottom: 10px">
   <div class="card-header">
-    <p class="card-title" style="font-weight: bold">Notícias</p>
+    <p class="card-title" style="font-weight: bold"><%= t('news') %></p>
   </div>
 
   <div class="form-inline" style="margin-top: 30px; margin-right: 50px; justify-content: flex-end;">
     <%= form_for :user_backoffice, method: :get do |f| %>
-      <%= f.text_field :search, name: :search, placeholder: 'Buscar', type: 'search',
+      <%= f.text_field :search, name: :search, placeholder: t('search'), type: 'search',
                        class: 'form-control mr-sm-2', value: params[:search].present? ? params[:search] : nil %>
       <button class="btn btn-outline-success my-2 my-sm-0" style='width: 40px'><i class="fas fa-search"></i></button>
       <% if params[:search].present? %>
@@ -26,7 +26,7 @@
           <p style="text-align: justify"><%= new.description %></p>
 
           <div class="container text-center" style="margin-top: 20px; margin-bottom: 25px">
-            <%= link_to 'Ver mais', edit_users_backoffice_news_path(new.id), class: 'btn btn-outline-primary' %>
+            <%= link_to t('more'), edit_users_backoffice_news_path(new.id), class: 'btn btn-outline-primary' %>
           </div>
         </div>
       <% end %>

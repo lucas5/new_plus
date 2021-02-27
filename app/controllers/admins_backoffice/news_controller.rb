@@ -2,7 +2,7 @@ class AdminsBackoffice::NewsController < AdminsBackofficeController
   before_action :set_new, only: [:edit, :update, :destroy]
 
   def index
-    @news = New.all
+    @news = New.not_excluded
   end
   
   # GET /news/1
@@ -39,7 +39,7 @@ class AdminsBackoffice::NewsController < AdminsBackofficeController
 
   # DELETE /news/1
   def destroy
-    @new.destroy
+    @new.update_attribute(:deleted, true)
     redirect_to admins_backoffice_news_index_path, notice: "Notícia apagada"
   end
 

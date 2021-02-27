@@ -5,33 +5,33 @@
         <div class="card card-primary">
 
           <div class="card-header">
-            <h3 class="card-title">Notícia</h3>
+            <h3 class="card-title"><%= t('new') %></h3>
           </div>
 
           <%= simple_nested_form_for([:admins_backoffice, new], url: new.new_record? ? admins_backoffice_news_index_path : admins_backoffice_news_path(new)) do |f| %>
             <div class="card-body">
 
               <div class="form-group">
-                <label>Título</label>
+                <label><%= t('title') %></label>
                 <%= f.input :title, label: false,
                             input_html: { class:"form-control", placeholder:"Enter title" } %>
               </div>
 
               <div class="form-group">
-                <label>Descrição</label>
+                <label><%= t('description') %></label>
                 <%= f.input :description, label: false,
                             input_html: { type:"email", class:"form-control", placeholder:"Enter description" } %>
               </div>
 
               <div class="form-group">
-                <label>Data da notícia</label>
+                <label><%= t('news_date') %></label>
                 <%= f.input :date_news, label: false, input_html: { type:"date", class:"form-control" }, as: :string %>
               </div>
               <%= render 'admins_backoffice/news/form/tags', f: f, new: new %>
             </div>
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-outline-success">Salvar</button>
+              <button type="submit" class="btn btn-outline-success"><%= t('register') %></button>
             </div>
           <% end %>
         </div>

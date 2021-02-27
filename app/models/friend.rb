@@ -5,6 +5,8 @@ class Friend < ApplicationRecord
     where(user_id: user_id, friend_id: friend_id)
   end
 
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
+
   # 0 -> user and friend are not friends
   # 1 -> friend not accepted request friendship
   # 2 -> user and friend are friends

@@ -22,8 +22,25 @@
         <a class="nav-link" data-widget="pushmenu" href="/" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link"><%= t('home') %></a>
       </li>
+
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <%= link_to ({:locale => :es}), class: 'nav-link' do %>
+          <%= image_tag 'espanha.png', alt: "Espanha Image", style: 'height: 30px; width: 30px;' %>
+        <% end %>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to ({:locale => 'pt-BR'}), class: 'nav-link' do %>
+          <%= image_tag 'brasil.png', alt: "Brasil Image", style: 'height: 30px; width: 30px' %>
+        <% end %>
+      </li>
+
     </ul>
   </nav>
 
@@ -35,7 +52,7 @@
           <%= image_tag 'user.png', class:"img-circle elevation-2", alt:"User Image" %>
         </div>
         <div class="info">
-          <a href="/" class="d-block"><%= current_user.name %></a>
+          <a href="/" class="d-block"><%= current_user.name.truncate(17) %></a>
         </div>
       </div>
 
@@ -43,33 +60,33 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <%= link_to users_backoffice_news_index_path, class:"nav-link" do %>
-              <i class="fas fa-user"></i> <p>Portal do usuário</p>
+              <i class="fas fa-user"></i> <p><%= t('users_backoffice') %></p>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to admins_backoffice_users_path, class:"nav-link" do %>
-              <i class="fas fa-users-cog"></i> <p>Admins</p>
+              <i class="fas fa-users-cog"></i> <p><%= t('admins') %></p>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to admins_backoffice_only_users_path, class:"nav-link" do %>
-              <i class="fas fa-user-friends"></i> <p>Usuários</p>
+              <i class="fas fa-user-friends"></i> <p><%= t('users') %></p>
             <% end %>
           </li>
 
-          <li class="nav-header">CADASTROS</li>
+          <li class="nav-header"><%= t('registrations').upcase %></li>
 
           <li class="nav-item">
             <%= link_to admins_backoffice_videos_path, class:"nav-link" do %>
-              <i class="fas fa-video"></i> <p>Videos</p>
+              <i class="fas fa-video"></i> <p><%= t('videos') %></p>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to admins_backoffice_news_index_path, class:"nav-link" do %>
-              <i class="far fa-newspaper"></i> <p>Notícias</p>
+              <i class="far fa-newspaper"></i> <p><%= t('news') %></p>
             <% end %>
           </li>
 
@@ -79,17 +96,17 @@
             <% end %>
           </li>
 
-          <li class="nav-header">MODERAÇÃO</li>
+          <li class="nav-header"><%= t('moderation').upcase %></li>
 
           <li class="nav-item">
             <%= link_to admins_backoffice_comments_path, class:"nav-link" do %>
-              <i class="fas fa-comments"></i> <p>Comentários</p>
+              <i class="fas fa-comments"></i> <p><%= t('comments') %></p>
             <% end %>
           </li>
 
           <li class="nav-item">
             <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
-              <i class="fas fa-sign-out-alt"></i> <p>Sair</p>
+              <i class="fas fa-sign-out-alt"></i> <p><%= t('sign_out') %></p>
             <% end %>
           </li>
         </ul>

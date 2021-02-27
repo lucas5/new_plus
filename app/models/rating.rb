@@ -5,4 +5,6 @@ class Rating < ApplicationRecord
 
   has_one :new, class_name: 'New'
   has_one :video, class_name: 'Video'
+
+  scope :not_excluded, -> { where(deleted: false); order(:id) }
 end

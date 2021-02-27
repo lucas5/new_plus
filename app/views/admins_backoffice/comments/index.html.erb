@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Selecionar usuário</h1>
+        <h1><%= t('select_user') %></h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item active">Selecionar usuário</li>
+          <li class="breadcrumb-item"><a href="/"><%= t('home') %></a></li>
+          <li class="breadcrumb-item active"><%= t('select_user') %></li>
         </ol>
       </div>
     </div>
@@ -17,11 +17,11 @@
 <section class="content">
   <div class="card">
     <div class="card-header">
-      <h3 class="card-title">USERS</h3>
+      <h3 class="card-title"><%= t('users').upcase %></h3>
 
       <div class="card-tools">
         <div class="card-tools">
-          <%= link_to 'Cadastrar', new_admins_backoffice_user_path, class: 'btn btn-outline-success' %>
+          <%= link_to t('register'), new_admins_backoffice_user_path, class: 'btn btn-outline-success' %>
         </div>
       </div>
     </div>
@@ -30,8 +30,8 @@
         <thead>
         <tr>
           <th>ID</th>
-          <th>Nome</th>
-          <th>Email</th>
+          <th><%= t('name') %></th>
+          <th><%= t('email') %></th>
           <th></th>
         </tr>
         </thead>
@@ -43,7 +43,7 @@
             <td><%= user.email %></td>
             <td>
               <%= link_to admins_backoffice_get_comments_path(user.id), class: "btn btn-outline-primary" do %>
-                <i class="fas fa-mouse-pointer"></i> Selecionar
+                <i class="fas fa-mouse-pointer"></i> <%= t('select') %>
               <% end %>
             </td>
           </tr>

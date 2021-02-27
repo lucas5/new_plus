@@ -2,11 +2,11 @@ class AdminsBackoffice::UsersController < AdminsBackofficeController
   before_action :set_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.where(is_admin: true)
+    @users = User.where(is_admin: true).not_excluded
   end
 
   def index_user
-    @users = User.where(is_admin: false)
+    @users = User.where(is_admin: false).not_excluded
   end
 
   # GET /users/1
@@ -57,7 +57,7 @@ class AdminsBackoffice::UsersController < AdminsBackofficeController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
+    @user.update_attribute(:deleted, true)
     redirect_to admins_backoffice_only_users_path, notice: "User apagado"
   end
 

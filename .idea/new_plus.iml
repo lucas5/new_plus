@@ -35,23 +35,7 @@
     </content>
     <orderEntry type="jdk" jdkName="Remote: ruby-2.6.3-p62" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.4, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.4, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="globalid (v0.4.2, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mail (v2.7.1, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="marcel (v0.3.3, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="method_source (v1.0.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mimemagic (v0.3.5, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.0.2, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nested_form (v0.3.2, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rack-test (v1.1.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-dom-testing (v2.0.3, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.3.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="simple_form (v4.1.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="turbolinks-source (v5.2.0, Remote: ruby-2.6.3-p62) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, Remote: ruby-2.6.3-p62) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="bundler (v1.17.3, Remote: ruby-2.6.3-p62) [gem]" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

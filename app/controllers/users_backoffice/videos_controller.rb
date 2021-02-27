@@ -5,7 +5,7 @@ class UsersBackoffice::VideosController < UsersBackofficeController
 
   def edit
     @video = Video.find(params[:id])
-    @comments = Comment.where(video_id: @video.id).order(created_at: :desc)
+    @comments = Comment.where(video_id: @video.id, locale: params[:locale]).order(created_at: :desc)
     @rating = Rating.where(user_id: current_user.id, video_id: @video.id).last
 
     create_comment params[:comments], @video.id
@@ -16,7 +16,7 @@ class UsersBackoffice::VideosController < UsersBackofficeController
 
   def create_comment(comment, item_id)
     if comment.present? and comment != ''
-      _comment = Comment.new({user_id: current_user.id, comment: comment, video_id: item_id})
+      _comment = Comment.new({user_id: current_user.id, comment: comment, video_id: item_id, locale: params[:locale]})
       if _comment.save
         redirect_to edit_users_backoffice_video_path(item_id), notice: "Comentário cadastrado"
       end

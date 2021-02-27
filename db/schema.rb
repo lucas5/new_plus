@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
     t.bigint "video_id"
     t.bigint "new_id"
     t.text "comment"
+    t.string "locale"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["new_id"], name: "index_comments_on_new_id"
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
   create_table "friends", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "friend_id"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["friend_id"], name: "index_friends_on_friend_id"
@@ -40,6 +43,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
     t.string "title"
     t.text "description"
     t.date "date_news"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["description"], name: "index_news_on_description"
@@ -51,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
     t.bigint "video_id"
     t.bigint "new_id"
     t.integer "rate", null: false
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["new_id"], name: "index_ratings_on_new_id"
@@ -61,6 +66,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
   create_table "tag_news", force: :cascade do |t|
     t.bigint "new_id"
     t.bigint "tag_id"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["new_id"], name: "index_tag_news_on_new_id"
@@ -70,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
   create_table "tag_videos", force: :cascade do |t|
     t.bigint "video_id"
     t.bigint "tag_id"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_tag_videos_on_tag_id"
@@ -79,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "locale"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name"], name: "index_tags_on_name"
@@ -90,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
     t.boolean "is_admin", default: false
     t.boolean "banned", default: false
     t.string "name"
+    t.boolean "deleted", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -104,6 +114,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
     t.text "description"
     t.string "title"
     t.float "duration"
+    t.boolean "deleted", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -116,8 +127,8 @@ ActiveRecord::Schema.define(version: 2021_02_11_214626) do
   add_foreign_key "ratings", "news", column: "new_id"
   add_foreign_key "ratings", "users"
   add_foreign_key "ratings", "videos"
-  add_foreign_key "tag_news", "news", column: "new_id"
-  add_foreign_key "tag_news", "tags"
-  add_foreign_key "tag_videos", "tags"
-  add_foreign_key "tag_videos", "videos"
+  add_foreign_key "tag_news", "news", column: "new_id", on_delete: :cascade
+  add_foreign_key "tag_news", "tags", on_delete: :cascade
+  add_foreign_key "tag_videos", "tags", on_delete: :cascade
+  add_foreign_key "tag_videos", "videos", on_delete: :cascade
 end
